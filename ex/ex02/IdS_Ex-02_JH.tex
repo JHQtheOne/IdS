@@ -1,0 +1,68 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{mathabx} % contains \Dashv
+\usepackage{fancyhdr}
+
+\title{Informatik der Syteme - Exercise 2}
+\author{Jan Hoffmann}
+\pagestyle{fancy}
+% Header
+\fancyhead[L]{\textbf{Exercise 2}}
+\fancyhead[C]{\textbf{Informatik der Syteme}}
+\fancyhead[R]{Jan Hoffmann\\ Matr. 3177642}
+% Footer
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{\thepage}
+
+\begin{document}
+\section*{Problem 2.1:}
+\begin{itemize}
+  \item[1.]
+		$X = 44/7 \approx 2 \cdot \pi \approx 6,2857142857142857142857142857143 $\\
+		$X$ ist positiv $\Rightarrow s = 0$ \\
+		$6,2857142857142857142857142857143 $\\
+		$= 3,1428571428571428571428571428571 \cdot 2^1 $\\
+		$= 1,5714285714285714285714285714286 \cdot 2^2 $\\
+		$\Rightarrow f = 0,5714285714285714285714285714286$\\
+		$e = 2 + B = 2 + 15 = 17 $\\
+		$X = (-1)^{0} \cdot (1 + 0,5714285714285714285714285714286) \cdot 2^{17-15} $	
+		
+	\item[2.]		
+		$s_2 = 0$\\
+		$e_2 = 10001$\\
+		$0,5714285714285714285714285714286 \cdot 2 = 1 + 0,1428571428571428571428571428571$\\
+		$1,1428571428571428571428571428571 \cdot 2 = 0 + 0,2857142857142857142857142857143$\\
+		$0,2857142857142857142857142857143 \cdot 2 = 0 + 0,5714285714285714285714285714286$\\
+		$0,5714285714285714285714285714286 \rightarrow$ periodisch\\
+		$f_2 = 1001001001$\\
+		
+	\item[3.]
+		$X = \underbrace{0}_{s}\underbrace{10001}_{e}\underbrace{1001001001}_{f}$
+	
+	\item[4.]
+		Mit dieser Anordnung lassen sich IEEE 754 Zahlen, genau wie signed Integer Werte, lexikalisch ordnen und damit vergleichen.
+		Mit anderen Anordnungen müsste man die Zahl aufsplitten und die Teile einzeln vergleichen.
+		
+	\item[5.]
+	  $X_2    = 0100 \, 0110 \, 0100 \, 1001$\\
+		$X_{16} =   4        6     4       9$\\
+\end{itemize}
+		
+\section*{Problem 2.2:}
+	$X = ABCD_{16} = 1010 \, 1011 \, 1100 \, 1101_2$\\
+	$s = 1 \Rightarrow X$ negativ\\
+	$e_2 = 01010 \Rightarrow e_{10} = 10 \Rightarrow e = 10 - 15 = -5$\\
+	$f_2 = 0,1111001101 \Rightarrow f_{10} = 0,9501953125 $\\
+	$(= 1 \cdot 2^{-1} + 1 \cdot 2^{-2} + 1 \cdot 2^{-3} + 1 \cdot 2^{-4} + 0 \cdot 2^{-5} + 0 \cdot 2^{-6} + 1 \cdot 2^{-7} + 1 \cdot 2^{-8} + 0 \cdot 2^{-9} + 1 \cdot 2^{-10})$\\
+	$X = (-1)^{1} \cdot (1 + 0,9501953125) \cdot 2^{-5} $ \\
+	$X = -0,060943603515625 $\\
+	
+
+	
+\end{document}
