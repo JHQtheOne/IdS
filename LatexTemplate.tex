@@ -1,0 +1,53 @@
+\documentclass{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage{scrpage2}
+\usepackage{rotating}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\pagestyle{scrheadings}
+%alles was über diesem Kommentar steht ist so über die jahre gewachsen, das sind (bis jetzt) alle Packages die ich gebraucht habe. Ich ändere da eigentlich nie etwas daran 
+
+
+\renewcommand{\thesubsection}{\alph{subsection}} %hier habe ich die subsection beschriftung geändert. kommentiert den befehl einfach aus und guckt was euch besser gefällt. 
+
+\ohead[]{Ich stehe im Blattkopf}
+\cfoot[\pagemark]{\pagemark}
+\author{Ich stehe im TITEL}
+\title{TITEL DES BLATTES }
+\begin{document}
+\maketitle %hier wird der titel geschrieben 
+\section{Aufgabe}
+\subsection{Teilaufgabe}
+\[ 3x = 2x +1\]
+\[ x = 1 \]
+\subsection{Teilaufgabe}
+\[ \in \frac{2x}{1}  \sum_{n=0}^N  \] 
+HAllo ich bin text $ich\ bin text im\ Mathe Modus.$ \\
+Jeder Absatz muss extra geschrieben werden, umbrüche sind aber ganz gut \\
+Tabelle ohne strichen \\
+\begin{tabular}{ l c r }
+  1 & 2 & 3 \\
+  4 & 5 & 6 \\
+  7 & 8 & 9 \\
+\end{tabular}
+\\
+Tabelle mit strichen
+\begin{tabular}{ l| c| r }
+  1 & 2 & 3 \\ \hline
+  4 & 5 & 6 \\ \hline
+  7 & 8 & 9 \\
+\end{tabular}
+\\
+Tabelle mit Mathe symbolen 
+\begin{tabular}{ l | c | r }
+  1 & 2 & $\in$ \\ \hline
+  4 & $\leq$ & 6 \\ \hline
+  7 & 8 & 9 \\ 
+\end{tabular}
+\\
+Bäume und Bilder mache ich immer mit Inkscape und binde diese dann hier ein. Wie das geht zeige ich euch wenn ihr das mal Braucht
+\newpage
+Ich bin auf der nächsten seite
+\end{document}
