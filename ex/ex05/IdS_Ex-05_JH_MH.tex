@@ -1,0 +1,67 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[left=2.5cm,right=2.5cm,top=4cm,bottom=3cm]{geometry} % Seitenränder 
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{mathabx} % contains \Dashv
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+
+\title{Informatik der Syteme - Exercise 5}
+\author{Jan Hoffmann}
+\pagestyle{fancy}
+% Header
+\fancyhead[L]{\textbf{Informatik der Systeme}\\ \textbf{Exercise 5}}
+\fancyhead[C]{}
+\fancyhead[R]{Jan Hoffmann, Matr. 3177642\\ Mike Hengge, Matr. 3940400}
+% Footer
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{\thepage}
+
+\begin{document}
+\section*{Problem 5.1:}
+\begin{enumerate}
+  \item $\setlength{\arraycolsep}{0pt}
+				\begin{array}[t]{*{9}{l}}
+					1&0&0&0&0&0&0&0&0&1\\
+					1&0&1&1&1& & & & & \\\cline{1-5}
+					 & &1&1&1&0&0& & & \\
+					 & &1&0&1&1&1& & & \\\cline{3-7}
+					 & & &1&0&1&1&0& & \\
+					 & & &1&0&1&1&1& & \\\cline{4-8}
+					 & & & & & & &1& &
+				\end{array}:10111=1011 $ \\\\
+				q = 2^4 -1 = 7 \\
+				\Rightarrow 0 < q < 2^p-1 \Rightarrow 0 < q < 15 \\
+				$ Die Periode von G(u) ist 7.
+		\item $n = m + k \Rightarrow m = n - k \\
+					m = 15 -4 = 11 \Rightarrow $ Es sind 11 Nutzbits.
+		\item Prüfstellen für 001: $001 * 10111 = 10111$
+		\item Primitive Teiler von G(u): \\
+					11 und 1101.
+		\item 
+		
+				
+\end{enumerate}
+
+\section*{Problem 5.2:}
+\begin{enumerate}
+	\item 
+	\item 
+\end{enumerate}
+
+\section*{Problem 5.3:}
+\begin{enumerate}	
+	\item CPI_e_f_f $= 1 * 0,5 + 5 * 0,2 + 3 * 0,1 + 2 * 0,2 = 2,2 
+	\item 
+	\item CPI_e_f_f $= 1 * 0,5 + 5 * 0,2 + 3 * 0,1 + 2* 0,1 = 2,0 \\
+				\Rightarrow $\frac{2,2}{2,0} = 1,1$ \Rightarrow  $ 10\% schneller
+	\item CPI_e_f_f $= 1 * 0,25 + 5 * 0,2 + 3 * 0,1 + 2 * 0,2 = 1,95 \\
+				\Rightarrow $\frac{2,2}{1,95} \approx 1,13 $ \Rightarrow $ 13\% schneller
+\end{enumerate}
+
+\end{document}
