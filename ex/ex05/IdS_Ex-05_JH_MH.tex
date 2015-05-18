@@ -40,7 +40,7 @@
 				$ Die Periode von G(u) ist 7.
 		\item $n = m + k \Rightarrow m = n - k \\
 					m = 15 -4 = 11 \Rightarrow $ Es sind 11 Nutzbits.
-		\item Prüfstellen für 001: $001 * 10111 = 10111$
+		\item Prüfstellen für 001: $001 \cdot 10111 = 10111$
 		\item Primitive Teiler von G(u): \\
 					11 und 1101.
 		\item 
@@ -50,18 +50,26 @@
 
 \section*{Problem 5.2:}
 \begin{enumerate}
-	\item 
-	\item 
+	\item Taktrate $2GHz = 2 \cdot 10^9 \frac{Taktzyklen}{Sekunde}$ \\
+				$2GHz \cdot 9s = 18 Milliarden Taktzyklen$
+	\item $T_A(P) = \frac{CPI_A}{f_A} = 9s$\\
+				$T_B(P) = \frac{CPI_B}{f_B} = \frac{1,25 \cdot CPI_A}{f_B} = 6s$\\
+				$\frac{T_B}{T_A} = \frac{6s}{9s} = \frac{1,25 \cdot CPI_A}{CPI_A} \frac{f_A}{f_B}$\\
+				$\frac{2}{3} = \frac{5 f_A}{4 f_B}$\\
+				$f_B = \frac{15}{8} f_A = 1,875 \cdot 2GHz$\\
+				$f_A = 3,75GHz$\\
+	\item $\frac{Perf(A,P)}{Perf(B,P)} = \frac{t_{cpu}(A,P)}{t_{cpu}(B,P)} = \frac{9s}{6s} = 1,5$\\
+				Rechner B ist 1,5 mal so schnell wie Rechner A. Er hat zwar eine deutlich höhere Taktrate, ist aber weniger effizient in Bezug auf die Ausführung dieses Programmes.
 \end{enumerate}
 
 \section*{Problem 5.3:}
 \begin{enumerate}	
-	\item $CPI_{eff} = 1 * 0,5 + 5 * 0,2 + 3 * 0,1 + 2 * 0,2 = 2,2$ 
-	\item $CPI_{eff} = 1 * 0,5 + 2 * 0,2 + 3 * 0,1 + 2 * 0,2 = 1,6 \\
+	\item $CPI_{eff} = 1 \cdot 0,5 + 5 \cdot 0,2 + 3 \cdot 0,1 + 2 \cdot 0,2 = 2,2$ 
+	\item $CPI_{eff} = 1 \cdot 0,5 + 2 \cdot 0,2 + 3 \cdot 0,1 + 2 \cdot 0,2 = 1,6 \\
 				\Rightarrow \frac{2,2}{1,6} = 1,375 \Rightarrow  $ 37,5\% schneller 
-	\item CPI_{eff} $= 1 * 0,5 + 5 * 0,2 + 3 * 0,1 + 2* 0,1 = 2,0 \\
+	\item CPI_{eff} $= 1 \cdot 0,5 + 5 \cdot 0,2 + 3 \cdot 0,1 + 2* 0,1 = 2,0 \\
 				\Rightarrow \frac{2,2}{2,0} = 1,1 \Rightarrow  $ 10\% schneller
-	\item CPI_{eff} $= 0,5 * 0,5 + 5 * 0,2 + 3 * 0,1 + 2 * 0,2 = 1,95 \\
+	\item CPI_{eff} $= 0,5 \cdot 0,5 + 5 \cdot 0,2 + 3 \cdot 0,1 + 2 \cdot 0,2 = 1,95 \\
 				\Rightarrow \frac{2,2}{1,95} \approx 1,13  \Rightarrow $ 13\% schneller
 \end{enumerate}
 
