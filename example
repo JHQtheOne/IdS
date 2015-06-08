@@ -1,0 +1,9 @@
+j main
+
+main:
+   li $a0, 3        #test werte übergeben
+   li $a1, 3
+   add $a0, $a1, $a0 
+   move $v0, $a0       # save $a0 in $v0, $v0
+   li $v0, 1           # set print mode to integer
+   syscall             # output Read in Run I / O

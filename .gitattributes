@@ -1,0 +1,18 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto eol=lf
+
+*.properties text eol=crlf
+*.sql text eol=crlf
+*.asm text eol=lf
+
+*.exe binary
+*.xlsx binary
+*.xlsm binary
+*.xls binary
+*.xlm binary
+*.png binary
+*.jpeg binary
+*.jpg binary
+*.gif binary
+*.jar binary
+*.pdf binary
