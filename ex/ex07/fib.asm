@@ -1,10 +1,11 @@
 j main
 
 main:
-   li $a0, 5        #test werte übergeben
+   li $a0, 4        		# test werte übergeben
    jal fib
-   li $v0, 1           # set print mode to integer
-   syscall             # output Read in Run I / O
+   move $a0, $v0 		# ergebnis von fib in eigabe für print
+   li $v0, 1           		# set print mode to integer
+   syscall             		# output Read in Run I / O
    # end execution
    li $v0, 10
    syscall
@@ -12,7 +13,7 @@ main:
 fib:
     addi $sp, $sp, -4		# make room on stack
     sw $ra, 0($sp)		# save return address
-    li $t0, 2			# $t0 = 0
+    li $t0, 1			# $t0 = 1
     li $t1, 0			# f0 = 0
     li $t2, 1			# f1 = 1
     beq $a0, 0, is0		# if (n == 0) return f0;
@@ -26,7 +27,7 @@ is1:
     j ret			# jump back to caller of fib
 isg2:
     jal fib_iter		# jump and link to fib_iter
-    move $v0, $a0		# store f in $v0
+    #move $v0, $a0		# store f in $v0
     j ret
 ret:
     lw $ra, 0($sp)		# retrieve return address

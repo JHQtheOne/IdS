@@ -1,3 +1,15 @@
+j main
+
+main:
+   li $a0, 4        #test werte übergeben
+   jal fib
+   move $a0, $v0 		# ergebnis von fib in eigabe für print
+   li $v0, 1           # set print mode to integer
+   syscall             # output Read in Run I / O
+   # end execution
+   li $v0, 10
+   syscall
+
 fib:
 bgt $a0 , 1 , recurse
 move $v0 , $a0
