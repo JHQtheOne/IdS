@@ -9,12 +9,44 @@
 \usepackage{mathabx} % contains \Dashv
 \usepackage{enumitem}
 \usepackage{fancyhdr}
+\usepackage{fancybox}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{listings}
+\usepackage{mips}
+
+\lstset{ %
+  language=[mips]Assembler,       % the language of the code
+  basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=4,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                 % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{dkgreen},       % comment style
+  stringstyle=\color{mauve},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add a comment within your code
+  morekeywords={*,...}               % if you want to add more keywords to the set
+}
 
 \title{Informatik der Syteme - Exercise 7}
 \author{Jan Hoffmann, Mike Hengge}
 \pagestyle{fancy}
 % Header
-\fancyhead[L]{\textbf{Informatik der Systeme}\\ \textbf{Exercise 6}}
+\fancyhead[L]{\textbf{Informatik der Systeme}\\ \textbf{Exercise 7}}
 \fancyhead[C]{}
 \fancyhead[R]{Jan Hoffmann, Matr. 3177642\\ Mike Hengge, Matr. 3940400}
 % Footer
@@ -24,16 +56,45 @@
 
 \begin{document}
 \section*{Problem 7.1:}
-	\item Siehe Datei "fib.asm".
+	\item 
+		\lstinputlisting {fib.asm}
 \section*{Problem 7.2:}
 	\item Für die iterative Darstellung werden 10 Register benötigt. \\
 				Für die rekursive Darstellung werden 4 Register benötigt.
 	
 \section*{Problem 7.3:}
 	\item Es werden 4 Funktionsaufrufe benötigt um auf das 4. Fibonacci-Element zu kommen. \\\\\\
-	\begin{minipage}[t]{0.4\linewidth}				
-						\includegraphics[scale=0.25]{baumstruktur.png}
-					\end{minipage}	
+		\begin{tikzpicture}[grow=down]
+			\Tree [.fib(4)	[.fib(3) [.fib(2) [.fib(1) 1 ][.fib(0) 0 ]][.fib(1) 1 ] ] 
+											[.fib(2) [.fib(1) 1 ][.fib(0) 0 ] ] ]
+		\end{tikzpicture}	
+	
 \section*{Problem 7.4:}
+\item
+	In der tiefsten Rekursionsstufe ist der Stack am größten (tiefste Ebene im Baum, s.o.).
+	Für jeden Aufruf von recurse werden drei Register auf den Stack gepusht (\$sp wird um 12 veringert).
+	Dann wird die Return Address \$ra in \$sp + 0 und \$a0 in \$sp + 4 gespeichert. Das passiert bis \$a0 = 1 ist. 
+	Dann wird direkt ein Wert (1) zurückgegeben und mit der Rekursion für \$a0 - 2 begonnen. Dafür ist jeweils \$sp + 8 reserviert.
+	\\
+	
+	\begin{tabular}{|l|l|}
+		\hline
+		address			&	value		\\ \hline	
+		\$sp_0 - 36	&	\$ra_1	\\
+		\$sp_0 - 32	&	2				\\
+		\$sp_0 - 28	&	0				\\ \hline
+		\$sp_0 - 24	&	\$ra_1	\\
+		\$sp_0 - 20	&	3				\\
+		\$sp_0 - 16	&	0				\\ \hline
+		\$sp_0 - 12	&	\$ra_0	\\
+		\$sp_0 - 8	&	4				\\
+		\$sp_0 - 4	&	0				\\ \hline
+		\$sp_0			& start value for stack pointer\\	\hline
+	\end{tabular}
+	
+	\item
+	Auf dem Rückweg werden in jeder Rekursion die Summe der beiden Kinder eines Knotens gebildet und in \$sp + 8 gespeichert.
+	Danach werden wieder drei Register gepopt in dem \$sp um 12 erhöht wird.
+	
 
 \end{document}

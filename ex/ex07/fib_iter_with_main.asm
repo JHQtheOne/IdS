@@ -1,3 +1,15 @@
+j main
+
+main:
+   li $a0, 4        		# test werte übergeben
+   jal fib
+   move $a0, $v0 		# ergebnis von fib in eigabe für print
+   li $v0, 1           		# set print mode to integer
+   syscall             		# output Read in Run I / O
+   # end execution
+   li $v0, 10
+   syscall
+
 fib:
     addi $sp, $sp, -4		# make room on stack
     sw $ra, 0($sp)		# save return address
@@ -19,8 +31,7 @@ isg2:
 ret:
     lw $ra, 0($sp)		# retrieve return address
     addi $sp, $sp, 4		# pop it off the stack
-    jr $ra			# jump back to caller of fib
-    
+    jr $ra			# jump back to caller of fib   
    
 fib_iter:
     bgt $t0, $a0, end		# if t0 > $a0 break loop
