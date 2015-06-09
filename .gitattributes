@@ -4,7 +4,7 @@
 *.properties text eol=crlf
 *.sql text eol=crlf
 *.asm text eol=lf
-*.tex text eol=crlf
+*.tex text eol=lf
 
 *.exe binary
 *.xlsx binary
