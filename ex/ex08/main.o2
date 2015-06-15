@@ -1,0 +1,26 @@
+	.file	"main.c"
+	.def	___main;	.scl	2;	.type	32;	.endef
+	.section	.text.startup,"x"
+	.p2align 2,,3
+	.globl	_main
+	.def	_main;	.scl	2;	.type	32;	.endef
+_main:
+	pushl	%ebp
+	movl	%esp, %ebp
+	andl	$-16, %esp
+	call	___main
+	movl	_sum, %eax
+	addl	$39, %eax
+	movl	%eax, _sum
+	leave
+	ret
+	.globl	_sum
+	.bss
+	.align 4
+_sum:
+	.space 4
+	.globl	_lower
+	.section .rdata,"dr"
+	.align 4
+_lower:
+	.long	12

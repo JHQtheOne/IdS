@@ -1,0 +1,105 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[left=2.5cm,right=2.5cm,top=4cm,bottom=3cm]{geometry} % Seitenränder 
+\usepackage{amsmath ,amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{mathabx} % contains \Dashv
+\usepackage{enumitem}
+\usepackage{titling} % provides \thetitle, \theauthor and \thedate 
+\usepackage{fancyhdr, fancybox}
+\usepackage{tikz, tikz-qtree}
+\usepackage{listings}
+
+
+\newcommand{\exnum}{8} % define variable exnum
+\title{Informatik der Syteme \\ Exercise \exnum}
+\author{Jan Hoffmann, Matr. 3177642 \\ Mike Hengge,  Matr. 3940400}
+
+\pagestyle{fancy}
+% Header
+\fancyhead[L]{\sffamily\textbf{\thetitle}}
+\fancyhead[C]{}
+\fancyhead[R]{\sffamily{\theauthor}}
+% Footer
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{\thepage}
+	
+\renewcommand\thesection{\sffamily{Problem \exnum.\arabic{section}:}\\}
+
+\lstdefinestyle{Assembler}{ %
+  language=[mips]Assembler,       % the language of the code
+  basicstyle=\scriptsize\ttfamily,       % the size of the fonts that are used for the code
+  numbers=left,                   % where to put the line-numbers
+  numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+  stepnumber=1,                   % the step between two line-numbers. If it's 1, each line 
+                                  % will be numbered
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  frame=single,                   % adds a frame around the code
+  rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+  tabsize=4,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                 % show the filename of files included with \lstinputlisting;
+                                  % also try caption instead of title
+  keywordstyle=\color{blue},          % keyword style
+  commentstyle=\color{dkgreen},       % comment style
+  stringstyle=\color{mauve},         % string literal style
+  escapeinside={\%*}{*)},            % if you want to add a comment within your code
+  morekeywords={*,...}               % if you want to add more keywords to the set
+}
+
+\lstdefinestyle{DOS}{backgroundcolor=\color{black}, basicstyle=\scriptsize\color{white}\ttfamily, xleftmargin = \parindent}
+\lstdefinestyle{C}{basicstyle=\scriptsize\ttfamily, numbers=left, numberstyle=\tiny, numbersep=8pt, frame = shadowbox, language = C, framexleftmargin=15pt, xleftmargin = \parindent}
+
+\begin{document}
+\section{}
+	\begin{enumerate}
+		\item 		
+			\begin{lstlisting}[style=DOS] 
+> gcc -save-temps main.c
+			\end{lstlisting}
+			erzeugt folgenden preprocessor code:
+			\lstinputlisting[style=C, label=main.i]{main.i}
+		
+			Im Vergleich zum Original Code wurde die Konstante UPPER durch ihren Wert 15 ersetzt.
+		
+			Der Präprozessor vereinfacht den Code (optimiert für den Compiler), um möglichst effizient in Assembler Code übersetzen zu können.
+			
+		\item 
+			$i = lower:$ \\
+			\begin{lstlisting}[style=Assembler]
+movl	_lower, %eax
+movl	%eax, 12(%esp)
+			\end{lstlisting}
+			Speichert \_lower auf den Stack: 12(\%esp) ist das Register das i repräsentiert.
+			
+			$sum += i$ \\
+			\begin{lstlisting}[style=Assembler]
+movl	_sum, %edx
+movl	12(%esp), %eax
+addl	%edx, %eax
+movl	%eax, _sum
+			\end{lstlisting}
+			load sum into \%edx\\
+			load i from Stack into \%eax\\
+			add \%edx to \%eax \\
+			store \%eax into sum \\
+			
+			$i < UPPER:$\\
+			\begin{lstlisting}[style=Assembler]
+cmpl	$14, 12(%esp)
+jle	L3			
+			\end{lstlisting}
+			Jump to L3 if i $\leq$ 14 ($\widehat{=}$ if $i < 15$)
+	\end{enumerate}
+\section{}
+	
+
+\end{document}

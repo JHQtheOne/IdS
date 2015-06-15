@@ -3,3 +3,5 @@
 *.blg
 *.dvi
 *.ps
+*_JH_MH.pdf
+install/
