@@ -104,8 +104,12 @@ jle	L3
 			Der Kompiler rechnet also die 3 Schleifendurchläufe (12+13+14) = 39 schon mal aus und speichert nur das Ergebnis.
 			Der optimierte Code berechnet solche Zwischenergebnisse zur Kompiliertzeit und erreicht damit eine höhere Effizient zur Laufzeit.
 		
-		\item
-			
+		\item 
+			In diesem Fall werden drei Byte benötigt.
+			\begin{lstlisting}[style=Assembler]
+401156:	83 c4 28             	add    $0x28,%esp
+			\end{lstlisting}
+			OP-Code, Quell Register Adresse und Ziel Register Adresse.
 	\end{enumerate}
 \section{}
 	
