@@ -98,6 +98,14 @@ cmpl	$14, 12(%esp)
 jle	L3			
 			\end{lstlisting}
 			Jump to L3 if i $\leq$ 14 ($\widehat{=}$ if $i < 15$)
+		
+		\item
+			Da das Programm nur mit Konstanten rechnet, steht das Ergebnis schon fest. 
+			Der Kompiler rechnet also die 3 Schleifendurchläufe (12+13+14) = 39 schon mal aus und speichert nur das Ergebnis.
+			Der optimierte Code berechnet solche Zwischenergebnisse zur Kompiliertzeit und erreicht damit eine höhere Effizient zur Laufzeit.
+		
+		\item
+			
 	\end{enumerate}
 \section{}
 	
