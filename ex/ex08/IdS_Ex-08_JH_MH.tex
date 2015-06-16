@@ -99,9 +99,13 @@ jle	L3
 			\end{lstlisting}
 			Jump to L3 if i $\leq$ 14 ($\widehat{=}$ if $i < 15$)
 		
+			Die For-Schleife ist durch L2: und L3 abgebildet. L2: ist der Kopf der Schleife, in dem die Abbruchbedingung getestet wird. Wenn sie nicht erfüllt ist wird ein Sprung in den Schleifenkörper L2: ausgeführt. Am Ende des Körpers wird die Laufvariable 12(\%esp) incrementiert.
+			
+			Wenn beim Eintreten in die Schleife mit jmp	L2 nicht an die Stelle nach dem Schleifenkörper gesprungen würde, wäre nach jedem Schleifendurchlauf ein Sprung zu L2 nötig. So muss nur ein Mal gesprungen werden. 
+		
 		\item
-			Da das Programm nur mit Konstanten rechnet, steht das Ergebnis schon fest. 
-			Der Kompiler rechnet also die 3 Schleifendurchläufe (12+13+14) = 39 schon mal aus und speichert nur das Ergebnis.
+			Da das Programm nur mit Konstanten rechnet, steht das Ergebnis schon fest.  
+			Der Kompiler rechnet bei der Optimierung also die 3 Schleifendurchläufe (12+13+14) = 39 schon mal aus und speichert nur das Ergebnis.
 			Der optimierte Code berechnet solche Zwischenergebnisse zur Kompiliertzeit und erreicht damit eine höhere Effizient zur Laufzeit.
 		
 		\item 
@@ -111,7 +115,76 @@ jle	L3
 			\end{lstlisting}
 			OP-Code, Quell Register Adresse und Ziel Register Adresse.
 	\end{enumerate}
-\section{}
-	
 
+\section{}
+	\begin{enumerate}
+		\item
+			\begin{lstlisting}[style=Assembler]
+max:
+  bgt $a1, $a0, retA1
+  j retA0   
+         
+min:
+  bgt $a0, $a1, retA1 # if a0 <= a1 return a0 else jump to return a1
+retA0:
+  move $v0, $a0
+  jr $ra # return a0
+retA1:
+  move $v0, $a1
+  jr $ra # return a1  
+  
+minOfMax:
+  addi $sp, $sp, -4		# make room on stack
+  sw $ra, 0($sp)		# save return address
+  jal max 			# v0 = max(a0,a1)	
+  move $t0, $v0 		# t0 = v0
+  move $a0, $a2			# a0 = a2 (set input for max)
+  move $a1, $a3			# a1 = a3 (set input for max)
+  jal max			# v0 = max(a0, a1)
+  move $t1, $v0			# t1 = v0
+  move $a0, $t0			# a0 = t0 (set input for min)
+  move $a1, $t1			# a1 = t1 (set input for min)
+  jal min 			# v0 = min(a0,a1)
+  lw $ra, 0($sp)		# retrieve return address
+  addi $sp, $sp, 4		# pop it off the stack
+  jr $ra			# jump back to caller of minOfMax 
+			\end{lstlisting}
+			Es werden 21 Instruktionen benötigt.
+			
+		\item \text{}\\
+			\begin{lstlisting}[style=C]
+int minOfMax ( int a , int b , int c , int d ) {
+	int tmp1 = a > b ? a : b;
+	int tmp2 = c > d ? c : d;
+	int tmp3 = tmp1 < tmp2 ? tmp1 : tmp2;
+	return tmp3;
+}
+			\end{lstlisting}
+		
+		\newpage
+		\item \text{}\\
+			\begin{lstlisting}[style=Assembler]
+minOfMax:
+  bgt $a0, $a1, retA0
+  move $t1, $a1
+  j max2
+retA0:
+  move $t1, $a0
+max2:    
+  bgt $a2, $a3, retA2
+  move $t2, $a3
+  j min
+retA2:
+  move $t2, $a2
+min:
+  bgt $t1, $t2, retT2
+  move $t3, $t1
+  j end
+retT2:
+  move $t3, $t2
+end:
+  move $v0, $t3
+  jr $ra			
+			\end{lstlisting}
+			Es werden nur noch 14 Instruktionen benötigt.
 \end{document}
