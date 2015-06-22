@@ -1,4 +1,5 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[10pt,a4paper,landscape]{article}
+\usepackage{pdflscape}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage[left=2.5cm,right=2.5cm,top=4cm,bottom=3cm]{geometry} % Seitenränder 
@@ -28,17 +29,55 @@
 \begin{document}
 \section{}
 	\begin{enumerate}
-		\item 		
-			
+	\begin{landscape}
 		\item 
-		\item
+			
+			\begin{tabular}{l || c c c c c c c c c c c c c c c c c c c c c} 
+  Instruktionen & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 & 21\\ 
+	\hline \hline
+  lw r1, 0x1000(r0) 	& IF & ID & EX & MA & WB \\
+	lw r2, 0x1004(r0) 	&    & IF & ID & EX & MA & WB \\
+	add r3, r1, r2    	&    &    & IF & ID &    &    & EX & MA & WB\\
+	sub r4, r1, r2    	&    &    &    & IF &    &    & ID & EX & MA & WB\\
+	sw 0x100c(r0), r4		&    &    &    &    & IF &    &    &    &    &    & ID & EX & MA & WB\\
+	sw 0x1008(r0), r3   &    &    &    &    &    & IF &    &    &    &    &    & ID & EX & MA & WB \\
+	addi r5, r0, 0x10   &    &    &    &    &    &    & IF &    &    &    &    &    & ID & EX & MA & WB   \\
+	sub r6, r0, r5			&    &    &    &    &    &    &    & IF &    &    &    &    &    & ID & EX & MA & WB  \\
+	sw 0x2000(r1), r5   &    &    &    &    &    &    &    &    & IF &    &    &    &    &    &    &    &    &  ID & MA & WB   \\
+	sw 0x2000(r2), r6   &    &    &    &    &    &    &    &    &    & IF &    &    &    &    &    &    &    &     & ID & MA & WB   \\
+			\end{tabular}
+		\item Um 6 Takte. (21 tatsächlich - 15 mindestens)
+		\item Mit Pipelining: 21 * 200ps = 4,2 ns \\
+					Ohne Piplining: 10 * 800ps = 8,0 ns \\
+				  Hier wurde also eine Beschleunigung von 48,5\% erzielt.
 			\end{enumerate}
-
+			\end{landscape}
 \section{}
 	\begin{enumerate}
-		\item
-		\item
-		\item
+	\begin{landscape}	
+		\item 
+			
+			\begin{tabular}{l || c c c c c c c c c c c c c c c c c c} 
+  Instruktionen & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18\\ 
+	\hline \hline
+  lw r1, 0x1000(r0) 	& IF & ID & EX & MA & WB \\
+	lw r2, 0x1004(r0) 	&    & IF & ID & EX & MA & WB \\
+	addi r5, r0, 0x10   &    &    & IF & ID & EX & MA & WB\\
+	add r3, r1, r2    	&    &    &    & IF & ID &    &    & EX & MA & WB\\
+	sub r6, r0, r5			&    &    &    &    & IF & ID &    &    & EX & MA & WB\\
+	sw 0x2000(r1), r5   &    &    &    &    &    & IF &    &    & ID & EX & MA & WB\\
+	sub r4, r1, r2    	&    &    &    &    &    &    & IF &    &    &    & ID & EX & MA & WB\\
+	sw 0x1008(r0), r3		&    &    &    &    &    &    &    & IF &    &    &    & ID & EX & MA & WB \\
+	sw 0x2000(r2), r6   &    &    &    &    &    &    &    &    & IF &    &    &    & ID & EX & MA & WB\\
+	sw 0x100c(r0), r4		&    &    &    &    &    &    &    &    &    & IF &    &    &    &    & ID & EX & MA & WB\\   
+	
+			\end{tabular}
+		 
+		\item  Die Pipeline muss um 3 Takte verzögert werden (18 statt 15).
+		\item  Mit Pipeline: 18 * 200ps = 3,6 ns. \\
+					 Ohne Pipeline: 10 * 800ps = 8,0 ns. \\
+					 Hier wurde also eine Beschleunigung von 55\% erreicht.
+				
 			\end{enumerate}
 			
 \end{document}
