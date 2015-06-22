@@ -31,9 +31,10 @@
 	\begin{enumerate}
 	\begin{landscape}
 		\item 
+			\setlength{\tabcolsep}{0.8mm}
+			\begin{tabular}{l || c c c c c c c c c c c c c c c c c c c c c c c c c} 
 			
-			\begin{tabular}{l || c c c c c c c c c c c c c c c c c c c c c} 
-  Instruktionen & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 & 21\\ 
+  Instruktionen & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 18 & 19 & 20 & 21 & 22 & 23 & 24 & 25\\ 
 	\hline \hline
   lw r1, 0x1000(r0) 	& IF & ID & EX & MA & WB \\
 	lw r2, 0x1004(r0) 	&    & IF & ID & EX & MA & WB \\
@@ -42,14 +43,14 @@
 	sw 0x100c(r0), r4		&    &    &    &    & IF &    &    &    &    &    & ID & EX & MA & WB\\
 	sw 0x1008(r0), r3   &    &    &    &    &    & IF &    &    &    &    &    & ID & EX & MA & WB \\
 	addi r5, r0, 0x10   &    &    &    &    &    &    & IF &    &    &    &    &    & ID & EX & MA & WB   \\
-	sub r6, r0, r5			&    &    &    &    &    &    &    & IF &    &    &    &    &    & ID & EX & MA & WB  \\
-	sw 0x2000(r1), r5   &    &    &    &    &    &    &    &    & IF &    &    &    &    &    &    &    &    &  ID & MA & WB   \\
-	sw 0x2000(r2), r6   &    &    &    &    &    &    &    &    &    & IF &    &    &    &    &    &    &    &     & ID & MA & WB   \\
+	sub r6, r0, r5			&    &    &    &    &    &    &    & IF &    &    &    &    &    &    &    &    & ID & EX & MA & WB \\
+	sw 0x2000(r1), r5   &    &    &    &    &    &    &    &    & IF &    &    &    &    &    &    &    &    & ID & EX & MA & WB   \\
+	sw 0x2000(r2), r6   &  &   &   &   &   &   &   &    &    & IF &    &    &    &    &    &    &    &    &    &    &    & ID & EX & MA & WB  \\
 			\end{tabular}
-		\item Um 6 Takte. (21 tatsächlich - 15 mindestens)
-		\item Mit Pipelining: 21 * 200ps = 4,2 ns \\
-					Ohne Piplining: 10 * 800ps = 8,0 ns \\
-				  Hier wurde also eine Beschleunigung von 48,5\% erzielt.
+				\item Um 10 Takte. (25 tatsächlich - 15 mindestens)
+		\item Mit Pipelining: 25 * 200ps = 5 ns \\
+					Ohne Piplining: 10 * 800ps = 8 ns \\
+				  Hier wurde also eine Beschleunigung von 37,5\% erzielt.
 			\end{enumerate}
 			\end{landscape}
 \section{}
