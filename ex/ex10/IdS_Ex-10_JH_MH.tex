@@ -1,0 +1,58 @@
+\documentclass[10pt,a4paper,landscape]{article}
+\usepackage{pdflscape}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[left=2.5cm,right=2.5cm,top=4cm,bottom=3cm]{geometry} % Seitenränder 
+\usepackage{amsmath ,amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{mathabx} % contains \Dashv
+\usepackage{enumitem}
+\usepackage{titling} % provides \thetitle, \theauthor and \thedate 
+\usepackage{fancyhdr, fancybox}
+\usepackage{tikz, tikz-qtree}
+\usepackage{listings}
+
+\renewcommand\thesection{\sffamily{Problem \exnum.\arabic{section}:}\\}
+\newcommand{\exnum}{10} % define variable exnum
+\title{Informatik der Syteme \\ Exercise \exnum}
+\author{Jan Hoffmann, Matr. 3177642 \\ Mike Hengge,  Matr. 3940400}
+
+\pagestyle{fancy}
+% Header
+\fancyhead[L]{\sffamily\textbf{\thetitle}}
+\fancyhead[C]{}
+\fancyhead[R]{\sffamily{\theauthor}}
+% Footer
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{\thepage}
+
+\begin{document}
+\section{}\label{sec:10.1}
+	\begin{enumerate}
+		\item
+	\end{enumerate}
+
+\section{Cache}\label{sec:10.2}
+	\begin{enumerate}
+		\item
+		\item
+		\item
+		\item \text{}\\
+			\begin{tabular}{cc|lllll}
+				\# & Anfrage         & Zelle 0 & Zelle 1 & Zelle 2 & Zelle 3 & Kommentar              \\ \hline
+				   & urspr. Belegung & 8:88    & 5:50(*) & 2:22    & 7:70(*) &                        \\
+				 1 & MEM[1] = 10     & 8:88    & 1:10(*) & 2:22    & 7:70(*) & write miss, write back \\
+				 2 & read MEM[4]     & 4:44    & 1:10(*) & 2:22    & 7:70(*) & read miss              \\
+				 3 & read MEM[7]     &         &         &         &         &                        \\ 
+				 4 & read MEM[3]     &         &         &         &         &                        \\ 
+				 5 & MEM[2] = 20     &         &         &         &         &                        \\
+				 6 & MEM[0] = 0      &         &         &         &         &                        \\ 
+				 7 & MEM[3] = 30     &         &         &         &         &                        \\ 
+				 8 & read MEM[0]     &         &         &         &         &                        \\ 
+				 9 & read MEM[6]     &         &         &         &         &                        \\ 
+				10 & read MEM[5]     &         &         &         &         &                        \\ 
+			\end{tabular}
+	\end{enumerate}
+			
+\end{document}
