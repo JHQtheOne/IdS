@@ -30,14 +30,34 @@
 \begin{document}
 \section{}\label{sec:10.1}
 	\begin{enumerate}
-		\item
+		\item Mittlere Zugriffszeit \\
+					Strategie 1: \ r_h * t_C + (1 - r_h) * (t_M + t_C) = t_c + (1 - r_h) * t_M \Rightarrow    (a) \\
+					Strategie 2: \ r_h' * t_C + (1-r_h') * t_M \Rightarrow (b) 
+		
+		\item Damit die 2. Strategie besser ist muss $b < a$ der Fall sein\\
+					\Rightarrow r_h' * t_C + (1 - r_h') * t_M < t_C + (1 - r_h) * t_M \\
+					\Rightarrow r_h' * t_C + t_M - r_h' * t_M < t_C + t_M - r_h * t_M \\
+					\Rightarrow r_h' * t_C - r_h' * t_M < t_C - r_h * t_M \\
+					\Rightarrow r_h' * (t_C - t_M) < t_C - r_h * t_M \\
+					\Rightarrow r_h' > \frac{t_C - r_h * t_M}{t_C - t_M} \\ 
+					\Rightarrow $Um diese Bedingung zu erfüllen muss $ r_h' $ größer sein als $\frac{t_C - r_h * t_M}{t_C - t_M} 
+					
+		\item Um ein möglichst schnelles Auslesen des Index zu ermöglichen, ist es besser dafür die höchstwertigen Bits der Adresse zu verwenden. Dadurch kann der Prozessor den Index schneller vergleichen und dadurch auch schneller prüfen, ob ein benötigter Block an der angegebenen Stelle ist oder nicht.
+		
+											
 	\end{enumerate}
 
 \section{Cache}\label{sec:10.2}
 	\begin{enumerate}
-		\item
-		\item
-		\item
+		\item Caches ermöglichen schnelleren Zugriff auf wiederholt aufgerufene Daten oder Daten die vermutlich bald benötigt werden, da diese Daten vorausschauend in ihnen abgespeichert werden.
+		\item Bei direct-mapped Caches, wird jeder Block des Hauptspeichers in einer durch eine Abbildungsvorschrift berechneten Zelle des Caches abgelegt. \\
+			 \Rightarrow $Vorteil: Kein Suchaufwand, Zelle ist immer bekannt \Rightarrow $ geringerer Hardwareaufwand \\\\
+					Beim fully-associative Cache dagegen kann jeder Block des Hauptspeiches in jeder freien Zelle abgelegt werden. \\
+					\Rightarrow $Vorteil: höhere Effizienz, alle Zellen können genutzt werden.
+		
+		\item Least Recently Used: Verdrängung des am längsten nicht genutzten Eintrags \\
+					Least Frequently Used: Verdrängung des am seltensten gelesenen Eintrags \\
+					First in First Out: Verdrängung des ältesten Eintrags
 		\item \text{}\\
 			\begin{tabular}{cc|lllll}
 				\# & Anfrage         & Zelle 0 & Zelle 1 & Zelle 2 & Zelle 3 & Kommentar              \\ \hline
