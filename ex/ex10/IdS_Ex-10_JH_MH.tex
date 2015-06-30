@@ -30,16 +30,16 @@
 \section{}\label{sec:10.1}
 	\begin{enumerate}
 		\item Mittlere Zugriffszeit \\
-					Strategie 1: \ r_h * t_C + (1 - r_h) * (t_M + t_C) = t_c + (1 - r_h) * t_M \Rightarrow    (a) \\
-					$ Strategie 2: \ r_h' * t_C + (1-r_h') * t_M \Rightarrow (b) 
+					Strategie 1: $ \ r_h * t_C + (1 - r_h) * (t_M + t_C) = t_c + (1 - r_h) * t_M \Rightarrow    (a) $\\
+					Strategie 2: $ \ r_h' * t_C + (1-r_h') * t_M \Rightarrow (b)$ 
 		
-		\item Damit die 2. Strategie besser ist muss $b < a$ der Fall sein\\
-					\Rightarrow r_h' * t_C + (1 - r_h') * t_M < t_C + (1 - r_h) * t_M \\
+		\item Damit die 2. Strategie besser ist muss $b < a$ der Fall sein.\\
+					$\Rightarrow r_h' * t_C + (1 - r_h') * t_M < t_C + (1 - r_h) * t_M \\
 					\Rightarrow r_h' * t_C + t_M - r_h' * t_M < t_C + t_M - r_h * t_M \\
 					\Rightarrow r_h' * t_C - r_h' * t_M < t_C - r_h * t_M \\
 					\Rightarrow r_h' * (t_C - t_M) < t_C - r_h * t_M \\
 					\Rightarrow r_h' > \frac{t_C - r_h * t_M}{t_C - t_M} \\ 
-					\Rightarrow $Um diese Bedingung zu erfüllen muss $ r_h' $ größer sein als $\frac{t_C - r_h * t_M}{t_C - t_M} 
+					\Rightarrow $Um diese Bedingung zu erfüllen muss $ r_h' $ größer sein als $\frac{t_C - r_h * t_M}{t_C - t_M} $
 					
 		\item Um ein möglichst schnelles Auslesen des Index zu ermöglichen, ist es besser dafür die höchstwertigen Bits der Adresse zu verwenden. Dadurch kann der Prozessor den Index schneller vergleichen und dadurch auch schneller prüfen, ob ein benötigter Block an der angegebenen Stelle ist oder nicht.
 		
