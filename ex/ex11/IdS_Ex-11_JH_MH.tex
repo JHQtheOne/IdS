@@ -34,9 +34,9 @@
 
 \section{Cache}\label{sec:10.2}
 	\begin{enumerate}	
-		\item Im sogenannten Page Translation Register, sind Verweise zu den physikalischen Seiten den virtuellen Seiten zugeordnet. Bei der 		Ermittlung wird zunächst geprüft ob die physikalische Seite im Register existiert. \\ 
-		Falls dem so ist, wird die physikalische Seitenzahl zusammen mit zusätzlichen Statusbits im Array der Page Table Entries (PTE) gespeichert, sortiert nach der virtuellen Seitenzahl. \\
-		Falls der Verweis zur physikalischen Seite nicht existiert, so kann der PTE auf die Position im dynamischen Speicher auf dem Laufwerk verweisen. \\
+		\item Im sogenannten Page Translation Register, sind Verweise zu den physikalischen Seiten den virtuellen Seiten zugeordnet. Bei der 		Ermittlung wird anhand des Statusbits zunächst geprüft ob die physikalische Seite im Register existiert. \\ 
+		Falls dem so ist, d.h. Statusbit = 1, wird die physikalische Seitenzahl zusammen mit zusätzlichen Statusbits im Array der Page Table Entries (PTE) gespeichert, sortiert nach der virtuellen Seitenzahl. \\
+		Falls der Verweis zur physikalischen Seite nicht existiert, d.h. Statusbit = 0, so muss die Speicherzele im Diskspeicher in den Hauptspeicher geladen werden. Dies erfordert mehrere Millionen Taktzyklen.
 		\item Seitenanzahl im virtuellen Speicher: \\
 					4 GB RAM; 2 MB Seitengröße \\
 					$\Rightarrow \frac{4GB}{2MB} = 2048$ Seiten\\
