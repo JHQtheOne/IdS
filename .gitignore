@@ -6,3 +6,5 @@
 *_JH_MH.pdf
 install/
 *.tps
+*.log
+*.db
