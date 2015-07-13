@@ -29,7 +29,30 @@
 \begin{document}
 \section{Caches}\label{sec:11.1}
 	\begin{enumerate}
-		\item  
+		\item \text{}\\
+			Index: $\log_2(8 Blocks) = 3 Bit$
+			
+			Valid: 1 Bit (0 = false, 1 = true)
+			
+			Tag: $\frac{2^{8} Speicheradressen}{2^3 Cacheadressen} = 2^5 \rightarrow 5 Bit$
+			
+			Data: 4 Byte = 32 Bit
+			
+			Es werden $8 Cachewörter \cdot (3+1+5+32)Bit = 328 Speicherzellen$ benötigt.
+			
+			
+			\begin{tabular}{|l|l|l|l|}
+				\hline
+				Index [3 Bit]	&	Valid [1 Bit] & Tag [5 Bit] & Data [32 Bit] \hspace{3cm} \\ \hline
+				000 & & & \\ \hline
+				001 & & & \\ \hline
+				010 & & & \\ \hline
+				011 & & & \\ \hline
+				100 & & & \\ \hline
+				101 & & & \\ \hline
+				110 & & & \\ \hline
+				111 & & & \\ \hline
+			\end{tabular}
 		\item $t_{C1} + (1-r_{h1}) \cdot t_{C2} + (1-r_{h2}) \cdot t_{MEM}$
 	\end{enumerate}
 
