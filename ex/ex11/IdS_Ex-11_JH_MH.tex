@@ -1,0 +1,54 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[left=2.5cm,right=2.5cm,top=4cm,bottom=3cm]{geometry} % Seitenränder 
+\usepackage{amsmath ,amsfonts, amssymb}
+\usepackage{graphicx}
+\usepackage{mathabx} % contains \Dashv
+\usepackage{enumitem}
+\usepackage{titling} % provides \thetitle, \theauthor and \thedate 
+\usepackage{fancyhdr, fancybox}
+\usepackage{tikz, tikz-qtree}
+\usepackage{listings}
+
+\renewcommand\thesection{\sffamily{Problem \exnum.\arabic{section}:}\\}
+\newcommand{\exnum}{11} % define variable exnum
+\title{Informatik der Syteme \\ Exercise \exnum}
+\author{Jan Hoffmann, Matr. 3177642 \\ Mike Hengge,  Matr. 3940400}
+
+\pagestyle{fancy}
+% Header
+\fancyhead[L]{\sffamily\textbf{\thetitle}}
+\fancyhead[C]{}
+\fancyhead[R]{\sffamily{\theauthor}}
+% Footer
+\fancyfoot[L]{}
+\fancyfoot[C]{}
+\fancyfoot[R]{\thepage}
+
+\begin{document}
+\section{}\label{sec:10.1}
+	\begin{enumerate}
+											
+	\end{enumerate}
+
+\section{Cache}\label{sec:10.2}
+	\begin{enumerate}	
+		\item Im sogenannten Page Translation Register, sind Verweise zu den physikalischen Seiten den virtuellen Seiten zugeordnet. Bei der 		Ermittlung wird zunächst geprüft ob die physikalische Seite im Register existiert. \\ 
+		Falls dem so ist, wird die physikalische Seitenzahl zusammen mit zusätzlichen Statusbits im Array der Page Table Entries (PTE) gespeichert, sortiert nach der virtuellen Seitenzahl. \\
+		Falls der Verweis zur physikalischen Seite nicht existiert, so kann der PTE auf die Position im dynamischen Speicher auf dem Laufwerk verweisen. \\
+		\item Seitenanzahl im virtuellen Speicher: \\
+					4 GB RAM; 2 MB Seitengröße \\
+					$\Rightarrow \frac{4GB}{2MB} = 2048$ Seiten\\
+		\item Seitenanzahl im physikalischen Speicher: \\
+					1 GB RAM; 2 MB Seitengröße \\
+					$\Rightarrow \frac{1Gb}{2MB} = 512$ Seiten \\
+		\item Speicher für Seitentabelle: \\
+					$\Rightarrow 2048$ Seiten mit je 32 bit \\
+					$\Rightarrow 512$ Seiten mit je 11 bit\\
+					$2048*32 + 512 * 11 = 71 168$ bit \sim 69,5 $ KB.
+		
+		
+	\end{enumerate}
+			
+\end{document}
