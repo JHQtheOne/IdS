@@ -34,9 +34,9 @@
 
 \section{Cache}\label{sec:10.2}
 	\begin{enumerate}	
-		\item Im sogenannten Page Translation Register, sind Verweise zu den physikalischen Seiten den virtuellen Seiten zugeordnet. Bei der 		Ermittlung wird zunächst geprüft ob die physikalische Seite im Register existiert. \\ 
-		Falls dem so ist, wird die physikalische Seitenzahl zusammen mit zusätzlichen Statusbits im Array der Page Table Entries (PTE) gespeichert, sortiert nach der virtuellen Seitenzahl. \\
-		Falls der Verweis zur physikalischen Seite nicht existiert, so kann der PTE auf die Position im dynamischen Speicher auf dem Laufwerk verweisen. \\
+		\item Im sogenannten Page Translation Register, sind Verweise zu den physikalischen Seiten den virtuellen Seiten zugeordnet. Bei der 		Ermittlung wird anhand des Statusbits zunächst geprüft ob die physikalische Seite im Register existiert. \\ 
+		Falls dem so ist, d.h. Statusbit = 1, wird die physikalische Seitenzahl zusammen mit zusätzlichen Statusbits im Array der Page Table Entries (PTE) gespeichert, sortiert nach der virtuellen Seitenzahl. \\
+		Falls der Verweis zur physikalischen Seite nicht existiert, d.h. Statusbit = 0, so muss die Speicherzele im Diskspeicher in den Hauptspeicher geladen werden. Dies erfordert mehrere Millionen Taktzyklen.
 		\item Seitenanzahl im virtuellen Speicher: \\
 					4 GB RAM; 2 MB Seitengröße \\
 					$\Rightarrow \frac{4GB}{2MB} = 2048$ Seiten\\
@@ -44,9 +44,8 @@
 					1 GB RAM; 2 MB Seitengröße \\
 					$\Rightarrow \frac{1Gb}{2MB} = 512$ Seiten \\
 		\item Speicher für Seitentabelle: \\
-					$\Rightarrow 2048$ Seiten mit je 32 bit \\
-					$\Rightarrow 512$ Seiten mit je 11 bit\\
-					$2048*32 + 512 * 11 = 71 168$ bit \sim 69,5 $ KB.
+					$\Rightarrow 2048$ Seiten mit je 9 bit als Index, da man 9 bit braucht um die 512 physikalischen Seiten zu indizieren
+					$2048*9 = 18432$ bit \sim 2,3 $ KB.
 		
 		
 	\end{enumerate}
